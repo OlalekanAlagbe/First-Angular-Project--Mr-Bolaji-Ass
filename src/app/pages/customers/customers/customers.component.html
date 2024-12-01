@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1>Customer Management</h1>
+  
+        <div class="form-group">
+          <div class="mb-4">
+            <label class="text-sm text-gray mb-2">Filter by:</label>
+            <select
+              [(ngModel)]="filterField"
+              (change)="filterCustomers()"
+              class="form-control select-control"
+            >
+              <option value="name">Name</option>
+              <option value="email">Email</option>
+              <option value="username">Username</option>
+              <option value="company">Company</option>
+              <option value="city">City</option>
+            </select>
+          </div>
+  
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            (input)="filterCustomers()"
+            [placeholder]="'Search by ' + filterField"
+            class="form-control search"
+          />
+        </div>
+      </div>
+  
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Username</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>City</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of filteredCustomers;">
+              <td>{{ customer.id }}</td>
+              <td>{{ customer.username }}</td>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.email }}</td>
+              <td>{{ customer.company.name }}</td>
+              <td>{{ customer.address.city }}</td>
+              <td>
+                <div class="action-buttons">
+                  <button
+                    [routerLink]="['/customers', customer.id]"
+                    class="btn btn-primary btn-table"
+                  >
+                    View
+                  </button>
+                  <button
+                    [routerLink]="['/customers', customer.id, 'edit']"
+                    class="btn btn-warning btn-table"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    (click)="deleteCustomer(customer.id)"
+                    class="btn btn-danger btn-table"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="mt-4">
+        <button [routerLink]="['/customers/create']" class="btn btn-success">
+          Create New Customer
+        </button>
+      </div>
+    </div>
+  </div>
+  

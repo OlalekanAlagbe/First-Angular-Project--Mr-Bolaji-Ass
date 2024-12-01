@@ -1,0 +1,62 @@
+<div class="container">
+    <h1 class="mb-4">Edit Customer</h1>
+  
+    <div *ngIf="customer">
+      <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+        <div class="mb-4">
+          <label>Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.name"
+            name="name"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Email:</label>
+          <input
+            type="email"
+            [(ngModel)]="customer.email"
+            name="email"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Phone:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.phone"
+            name="phone"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Website:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.website"
+            name="website"
+          />
+        </div>
+  
+        <button
+          type="submit"
+          [disabled]="!customerForm.form.valid"
+          class="btn-primary mr-2"
+        >
+          Update Customer
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          class="btn-danger"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+  
