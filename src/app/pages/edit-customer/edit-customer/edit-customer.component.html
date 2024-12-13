@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <h1 class="mb-4">Edit Customer</h1>
   
     <div *ngIf="customer">
@@ -42,6 +42,143 @@
           />
         </div>
   
+        <button
+          type="submit"
+          [disabled]="!customerForm.form.valid"
+          class="btn-primary mr-2"
+        >
+          Update Customer
+        </button>
+        <button
+          type="button"
+          (click)="cancel()"
+          class="btn-danger"
+        >
+          Cancel
+        </button>
+      </form>
+    </div>
+  </div>
+   -->
+
+
+   <div class="container">
+    <h1 class="mb-4">Edit Customer</h1>
+  
+    <div *ngIf="customer">
+      <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+        <!-- Basic Info -->
+        <div class="mb-4">
+          <label>Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.name"
+            name="name"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Email:</label>
+          <input
+            type="email"
+            [(ngModel)]="customer.email"
+            name="email"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Phone:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.phone"
+            name="phone"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Website:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.website"
+            name="website"
+          />
+        </div>
+  
+        <!-- Address -->
+        <h3 class="mb-3">Address</h3>
+        <div class="mb-4">
+          <label>Street:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.address.street"
+            name="street"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Suite:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.address.suite"
+            name="suite"
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>City:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.address.city"
+            name="city"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Zipcode:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.address.zipcode"
+            name="zipcode"
+            required
+          />
+        </div>
+  
+        <!-- Company -->
+        <h3 class="mb-3">Company</h3>
+        <div class="mb-4">
+          <label>Company Name:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.company.name"
+            name="companyName"
+            required
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Catchphrase:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.company.catchPhrase"
+            name="catchPhrase"
+          />
+        </div>
+  
+        <div class="mb-4">
+          <label>Business:</label>
+          <input
+            type="text"
+            [(ngModel)]="customer.company.bs"
+            name="bs"
+          />
+        </div>
+  
+        <!-- Buttons -->
         <button
           type="submit"
           [disabled]="!customerForm.form.valid"
